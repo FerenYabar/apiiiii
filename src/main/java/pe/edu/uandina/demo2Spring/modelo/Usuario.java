@@ -1,5 +1,7 @@
 package pe.edu.uandina.demo2Spring.modelo;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +12,7 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "codusuario")
-    private Long codUsuario;
+    private long codUsuario;
     @Column(name = "dniusuario")
     private String dniUsuario;
     @Column(name = "nombreusuario")
@@ -28,6 +30,7 @@ public class Usuario {
     @Column(name = "direccion")
     private String Direccion;
     @OneToMany(mappedBy = "tieneUsuario")
+    @JsonManagedReference
     private List<Reserva> reservas;
 
     public Usuario() {
