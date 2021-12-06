@@ -33,10 +33,14 @@ public class ReservaRestController {
     }
 
     @PutMapping("/reserva/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
     public Reserva actualizar(@RequestBody Reserva reserva, @PathVariable Long id){
         Reserva reservaOriginal = reservaService.findById(id);
         reservaOriginal.setFechaReserva(reserva.getFechaReserva());
         return reservaService.save(reservaOriginal);
+    }
+    @DeleteMapping("/reserva/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void  eliminar(@PathVariable Long id){
+        reservaService.delete(id);
     }
 }

@@ -6,7 +6,7 @@ insert into local (nombrelocal,ubicacionlocal,ruclocal,contrasena) values ("Borr
 
 insert into usuario (dniusuario,nombreusuario,apellidousuario,usuario,contrasena,celular,correo,direccion) values ("12457896","Josept","Ccoyore","jose123","123","954123678","jose@hotmail.com","Urb. Magisterio segunda etapa"),("85742631","Pedro","Picapiedra","pedro123","321","978456632","picapiedra@hotmail.com","Urb. La Florida M-23"),("84752633","Pabel","Peña","pabelita123","32111","978484859","pabelita@hotmail.com","Urb. entel Peru M-22");
 
-insert into reserva (fechareserva,estadoreserva,tieneusuario,tienelocal) values ("2021-02-17",TRUE,1,1),("2021-06-19",TRUE,2,2),("2021-04-18",TRUE,3,3);
+insert into reserva (fechareserva,estadoreserva,tienelocal1,tieneusuario) values ("2021-02-17",TRUE,1,1),("2021-06-19",TRUE,2,2),("2021-04-18",TRUE,3,3);
 
 insert into producto(nombreproducto, mililitrosproducto,descripcionproducto,volalcoholproducto,imagenproducto,tienemarca,tienecategoria) values ("Black",1000,"Ron Cartavio Black",27,"licor1",1,1),("Blanco",1000,"Ron blanco ","25","licor2",2,2),("Etiqueta Azul",1000,"Delicioso whisky",50,"licor3",3,3);
 

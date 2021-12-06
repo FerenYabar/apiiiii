@@ -31,7 +31,6 @@ public class MarcaRestController {
     }
 
     @PutMapping("/marca/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
     public Marca actualizar(@RequestBody Marca marca,@PathVariable Long id){
         Marca marcaOriginal = marcaService.findById(id);
         marcaOriginal.setNombreMarca(marca.getNombreMarca());
@@ -39,6 +38,7 @@ public class MarcaRestController {
     }
 
     @DeleteMapping("/marca/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void  eliminar(@PathVariable Long id){
         marcaService.delete(id);
     }

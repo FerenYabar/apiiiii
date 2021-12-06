@@ -32,10 +32,14 @@ public class ProductoRestController {
     }
 
     @PutMapping("/producto/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
     public Producto actualizar(@RequestBody Producto producto, @PathVariable Long id){
         Producto productoOriginal = productoService.findById(id);
         productoOriginal.setNombreProducto(producto.getNombreProducto());
         return productoService.save(productoOriginal);
+    }
+    @DeleteMapping("/producto/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void  eliminar(@PathVariable Long id){
+        productoService.delete(id);
     }
 }

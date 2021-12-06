@@ -32,7 +32,6 @@ public class UsuarioRestController {
     }
 
     @PutMapping("/usuarios/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
     public Usuario actualizar(@RequestBody Usuario usuario,@PathVariable Long id){
         Usuario usuario1 = usuarioService.findById(id);
         usuario1.setUsuario(usuario.getUsuario());
@@ -48,7 +47,9 @@ public class UsuarioRestController {
     }
 
     @DeleteMapping("/usuarios/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void eliminar(@PathVariable Long id){
         usuarioService.delete(id);
     }
+
 }

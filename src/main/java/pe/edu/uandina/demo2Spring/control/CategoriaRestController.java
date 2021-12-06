@@ -33,11 +33,15 @@ public class CategoriaRestController {
     }
 
     @PutMapping("/categoria/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
     public Categoria actualizar(@RequestBody Categoria categoria, @PathVariable Long id){
         Categoria catoriaNueva = categoriaService.findById(id);
         catoriaNueva.setProductos(categoria.getProductos());
         catoriaNueva.setNombreCategoria(categoria.getNombreCategoria());
         return categoriaService.save(catoriaNueva);
+    }
+    @DeleteMapping("/categoria/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void eliminar(@PathVariable Long id){
+        categoriaService.delete(id);
     }
 }

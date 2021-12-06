@@ -32,14 +32,17 @@ public class LocalRestController {
     }
 
     @PutMapping("/local/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
     public Local actualizar(@RequestBody Local local,@PathVariable Long id){
         Local localOriginal = localService.findById(id);
         localOriginal.setNombreLocal(local.getNombreLocal());
+        localOriginal.setUbicacionLocal(local.getUbicacionLocal());
+        localOriginal.setRuclocal(local.getRuclocal());
+        localOriginal.setContrasena(local.getContrasena());
         return localService.save(localOriginal);
     }
 
     @DeleteMapping("/local/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void eliminar(@PathVariable Long id){
         localService.delete(id);
     }

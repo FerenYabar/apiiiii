@@ -33,12 +33,16 @@ public class DetalleReservaRestController {
     }
 
     @PutMapping
-    @ResponseStatus(HttpStatus.NO_CONTENT)
     public DetalleReserva actualizar(@RequestBody DetalleReserva detalleReserva, @PathVariable Long id){
         DetalleReserva detalleReservaNueva = detalleReservaService.findById(id);
         detalleReservaNueva.setTieneProductoLocal(detalleReserva.getTieneProductoLocal());
         detalleReservaNueva.setCantidadDetalleReserva(detalleReserva.getCantidadDetalleReserva());
         detalleReservaNueva.setTieneReserva(detalleReserva.getTieneReserva());
         return detalleReservaService.save(detalleReservaNueva);
+    }
+    @DeleteMapping("/detallereserva/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void eliminar(@PathVariable Long id){
+        detalleReservaService.delete(id);
     }
 }

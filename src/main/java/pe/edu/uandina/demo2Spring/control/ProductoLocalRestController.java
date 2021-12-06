@@ -21,7 +21,7 @@ public class ProductoLocalRestController {
         return productoLocalService.findAll();
     }
 
-    @GetMapping("productolocal/{id}")
+    @GetMapping("/productolocal/{id}")
     public ProductoLocal mostrar(@PathVariable Long id){
         return productoLocalService.findById(id);
     }
@@ -32,11 +32,15 @@ public class ProductoLocalRestController {
         return productoLocalService.save(productoLocal);
     }
 
-    @PutMapping("productolocal/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PutMapping("/productolocal/{id}")
     public ProductoLocal actualizar(@RequestBody ProductoLocal productoLocal, @PathVariable Long id){
         ProductoLocal productoLocalOriginal = productoLocalService.findById(id);
         productoLocalOriginal.setPrecioProductoLocal(productoLocal.getPrecioProductoLocal());
         return productoLocalService.save(productoLocalOriginal);
+    }
+    @DeleteMapping("/productolocal/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void  eliminar(@PathVariable Long id){
+        productoLocalService.delete(id);
     }
 }

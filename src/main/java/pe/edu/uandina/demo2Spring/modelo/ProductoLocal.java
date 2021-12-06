@@ -1,6 +1,7 @@
 package pe.edu.uandina.demo2Spring.modelo;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -14,23 +15,24 @@ public class ProductoLocal {
     @Column(name = "codproductolocal")
     private Long codProductoLocal;
     @Column(name = "precioproductolocal")
-    private long precioProductoLocal;
+    private Long precioProductoLocal;
     @OneToMany(mappedBy = "tieneProductoLocal")
+    @JsonManagedReference(value = "jsonProductoLocal")
     private List<DetalleReserva> detalleReservas;
     @ManyToOne
     @JoinColumn(name = "tieneproducto", referencedColumnName = "codproducto")
-    @JsonBackReference
+    @JsonBackReference (value = "jsonProducto")
     private Producto tieneProducto;
     @ManyToOne
     @JoinColumn(name = "tienelocal", referencedColumnName = "codlocal")
-    @JsonBackReference
+    @JsonBackReference (value = "jsonLocal")
     private Local tieneLocal;
 
 
     public ProductoLocal() {
     }
 
-    public ProductoLocal(Long codProductoLocal, long precioProductoLocal, List<DetalleReserva> detalleReservas, Producto tieneProducto, Local tieneLocal) {
+    public ProductoLocal(Long codProductoLocal, Long precioProductoLocal, List<DetalleReserva> detalleReservas, Producto tieneProducto, Local tieneLocal) {
         this.codProductoLocal = codProductoLocal;
         this.precioProductoLocal = precioProductoLocal;
         this.detalleReservas = detalleReservas;
@@ -50,7 +52,7 @@ public class ProductoLocal {
         return precioProductoLocal;
     }
 
-    public void setPrecioProductoLocal(long precioProductoLocal) {
+    public void setPrecioProductoLocal(Long precioProductoLocal) {
         this.precioProductoLocal = precioProductoLocal;
     }
 
